@@ -1,10 +1,9 @@
 package com.example.demo_selenium
 
 import com.codeborne.selenide.Selectors
-import com.codeborne.selenide.Selenide
-
+import com.codeborne.selenide.Selenide as driver
 class LegalNoticePage {
-    val buttons = Selenide.elements(Selectors.byTagName("button"));
+    val buttons = driver.elements(Selectors.byTagName("button"));
 
     private val continueButton = buttons[0]
     private val legalNoticeButton = buttons[1]

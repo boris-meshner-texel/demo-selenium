@@ -1,11 +1,10 @@
 package com.example.demo_selenium
 
 import com.codeborne.selenide.Selectors.*
-import com.codeborne.selenide.Selenide.element
-import com.codeborne.selenide.Selenide.elements
+import com.codeborne.selenide.Selenide as driver
 
 class LandingPage {
-    val buttons = elements(byTagName("button"));
+    val buttons = driver.elements(byTagName("button"));
 
     private val joinArenaButton = buttons[0]
     private val helpLink = buttons[1]

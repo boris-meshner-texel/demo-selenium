@@ -6,7 +6,7 @@ import com.codeborne.selenide.logevents.SelenideLogger
 import io.qameta.allure.selenide.AllureSelenide
 import org.junit.jupiter.api.*
 
-import com.codeborne.selenide.Selenide.*
+import com.codeborne.selenide.Selenide as driver
 
 
 class LandingPageTest {
@@ -17,12 +17,14 @@ class LandingPageTest {
     @BeforeEach
     fun setUpAllure() {
         SelenideLogger.addListener("allure", AllureSelenide())
+
     }
 
     @BeforeEach
     fun setUp() {
         Configuration.startMaximized = true
-        open("http://localhost:3000/")
+        driver.open("http://localhost:3000/")
+
     }
 
     @Test
@@ -38,9 +40,8 @@ class LandingPageTest {
 
         val pinErrorLabel = "Please check the Code and try again."
         val errorMsgAutomationAtr = "data-automation-check-pin-error-msg"
-        val isError = element(byAttribute(errorMsgAutomationAtr, "true")).text().equals(pinErrorLabel)
+        val isError = driver.element(byAttribute(errorMsgAutomationAtr, "true")).text().equals(pinErrorLabel)
 
-        println(isError);
 
         print(",essage")
 
