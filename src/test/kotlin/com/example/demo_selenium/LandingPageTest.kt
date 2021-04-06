@@ -1,6 +1,5 @@
 package com.example.demo_selenium
 
-import com.codeborne.selenide.Condition.visible
 import com.codeborne.selenide.Configuration
 import com.codeborne.selenide.Selectors.*
 import com.codeborne.selenide.logevents.SelenideLogger
@@ -12,8 +11,8 @@ import com.codeborne.selenide.Selenide.*
 
 class LandingPageTest {
     private val landingPage = LandingPage()
-
-
+    private val legalNoticePage = LegalNoticePage()
+    private val enterPinCodePage = EnterPinCodePage()
 
     @BeforeEach
     fun setUpAllure() {
@@ -24,37 +23,24 @@ class LandingPageTest {
     fun setUp() {
         Configuration.startMaximized = true
         open("http://localhost:3000/")
-
     }
 
     @Test
-    fun allNavigationsWork() {
+    fun legalNotice() {
 
-        landingPage.joinArena();
+        landingPage.clickJoinArena();
+        //test if in the right page
 
-
-        element(byTagName("button")).should(visible)
-        element(byTagName("button")).click();
+        legalNoticePage.clickContinueButton()
 
         //element(byName("input1")).waitUntil(visible,20000)
+        enterPinCodePage.inputCode(listOf("1", "2", "3", "4"))
 
-
-        val numbers: IntArray = intArrayOf(1, 2, 3, 4)
-        elements(byAttribute("data-automation-input-code", "true")).forEachIndexed { index, el->
-            el.sendKeys(numbers[index].toString())
-        }
-
-        var pinErrorLabel = "Please check the Code and try again."
-        var errorMsgAutomationAtr  = "data-automation-check-pin-error-msg"
-        var isError  = element(byAttribute(errorMsgAutomationAtr, "true")).text().equals(pinErrorLabel)
+        val pinErrorLabel = "Please check the Code and try again."
+        val errorMsgAutomationAtr = "data-automation-check-pin-error-msg"
+        val isError = element(byAttribute(errorMsgAutomationAtr, "true")).text().equals(pinErrorLabel)
 
         println(isError);
-
-
-
-
-
-
 
         print(",essage")
 

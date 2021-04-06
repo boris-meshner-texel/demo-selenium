@@ -10,7 +10,7 @@ class LandingPage {
     private val joinArenaButton = buttons[0]
     private val helpLink = buttons[1]
 
-    fun joinArena () {
+    fun clickJoinArena () {
         joinArenaButton.click();
     }
 
